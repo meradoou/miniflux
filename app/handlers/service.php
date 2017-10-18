@@ -26,6 +26,10 @@ function sync($user_id, $item_id)
     if (Helper\bool_config('shaarli_enabled')) {
         shaarli_sync($item);
     }
+
+    if (Helper\bool_config('pocket_enabled')) {
+        pocket_sync($item);
+    }    
 }
 
 function instapaper_sync(array $item)
@@ -171,6 +175,38 @@ function shaarli_get_access_token()
     // Base64Url Encoding:
     $signature = rtrim(strtr(base64_encode($signature), '+/' , '-_' ), '=' );
     return $header . '.' . $payload . '.' . $signature;
+}
+
+function pocket_sync(array $item)
+{
+    $consumer_key = Helper\config('pocket_consumer_key');
+    $redirect_uri = Helper\config('pocket_redirect_uri');
+    $access_token = Helper\config('pocket_access_token');
+
+    if ($access_token && $consumer_key) {
+        api_post_json_call('https://getpocket.com/v3/add', [
+            'url' => $item['url'],
+            'title' => $item['title'],
+            'consumer_key' => $consumer_key,
+            'access_token' => $access_token
+        ]);
+    }
+}
+
+function pocket_request_token()
+{
+    $consumer_key = Helper\config('pocket_consumer_key');
+    $redirect_uri = Helper\config('pocket_redirect_uri');
+    
+    $raw = api_post_call('https://getpocket.com/v3/oauth/request', [
+        'consumer_key' => $consumer_key,
+        'redirect_uri' => $redirect_uri
+    ]);
+    $data = json_decode($raw, true);
+    if ($data) {
+        var_dump($data);
+        // header(sprintf('Location: https://getpocket.com/auth/authorize?request_token=27e6ba12-b647-24fe-b793-6b2c1e&redirect_uri=%s', $data['code'], $redirect_uri));
+    }
 }
 
 function api_get_call($url, array $headers = array())

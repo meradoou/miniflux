@@ -81,6 +81,26 @@
         <?php echo Miniflux\Helper\form_checkbox('shaarli_private', t('Private Bookmarks'), 1, isset($values['shaarli_private']) && $values['shaarli_private'] == 1) ?><br />
     </div>
 
+    <h3><?= t('Pocket') ?></h3>
+    <div class="options">
+        <p><?= Miniflux\Helper\form_checkbox('pocket_enabled', t('Send bookmarks to Pocket?'), 1, isset($values['pocket_enabled']) && $values['pocket_enabled'] ==1) ?></p>
+        <p>&nbsp;</p>
+        <p>
+            <?php echo Miniflux\Helper\form_label(t('Pocket Consumer key'), 'pocket_consumer_key') ?>
+            <?php echo Miniflux\Helper\form_text('pocket_consumer_key', $values, $errors) ?>
+        </p>
+        <p>&nbsp;</p>
+        <p>
+            <?php echo Miniflux\Helper\form_label(t('Redirect URI'), 'pocket_redirect_uri') ?>
+            <?php echo Miniflux\Helper\form_text('pocket_redirect_uri', $values, $errors) ?>
+        </p>  
+        <p>&nbsp;</p>
+        <p>
+            <?php echo Miniflux\Helper\form_label(t('Access Token'), 'pocket_access_token') ?>
+            <?php echo Miniflux\Helper\form_text('pocket_access_token', $values, $errors) ?>
+        </p>        
+    </div>
+
     <div class="form-actions">
         <input type="submit" value="<?php echo t('Save') ?>" class="btn btn-blue"/>
     </div>

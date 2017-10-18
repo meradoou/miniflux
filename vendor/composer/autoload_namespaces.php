@@ -6,8 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'ZendXml\\' => array($vendorDir . '/zendframework/zendxml/library'),
+    'Symfony\\Component\\Stopwatch\\' => array($vendorDir . '/symfony/stopwatch'),
     'SimpleValidator' => array($vendorDir . '/fguillot/simple-validator/src'),
+    'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'PicoFeed' => array($vendorDir . '/miniflux/picofeed/lib'),
     'PicoDb' => array($vendorDir . '/fguillot/picodb/lib'),
     'JsonRPC' => array($vendorDir . '/fguillot/json-rpc/src'),
