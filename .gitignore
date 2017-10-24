@@ -28,3 +28,6 @@ config.php
 rules/*.php
 data/favicons/*.*
 themes/*
+.viminfo
+.ssh/
+.bash_history
