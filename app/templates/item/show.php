@@ -34,7 +34,7 @@
         </h1>
 
         <ul class="item-infos">
-            <li>
+            <li class="bookmark-action">
                 <a
                     class="bookmark-icon"
                     href="?action=bookmark&amp;value=<?php echo (int)!$item['bookmark'] ?>&amp;id=<?php echo $item['id'] ?>&amp;redirect=show&amp;menu=<?php echo $menu ?>"
@@ -43,23 +43,23 @@
                     data-action="bookmark"
                 ></a>
             </li>
-            <li>
+            <li class="feed-action">
                 <a href="?action=feed-items&amp;feed_id=<?php echo $feed['id'] ?>"><?php echo Miniflux\Helper\escape($feed['title']) ?></a>
             </li>
             <?php if (!empty($item['author'])): ?>
-                <li>
+                <li class="author-action">
                     <?php echo Miniflux\Helper\escape($item['author']) ?>
                 </li>
             <?php endif ?>
-            <li class="hide-mobile">
+            <li class="hide-mobile time-action">
                 <span title="<?php echo dt('%e %B %Y %k:%M', $item['updated']) ?>"><?php echo Miniflux\Helper\relative_time($item['updated']) ?></span>
             </li>
             <?php if ($item['enclosure_url']): ?>
-            <li>
+            <li class="enclosure-action">
                 <a href="<?php echo $item['enclosure_url'] ?>" rel="noreferrer" target="_blank"><?php echo t('attachment') ?></a>
             </li>
             <?php endif ?>
-            <li class="hide-mobile">
+            <li class="hide-mobile download-action">
                 <span id="download-item"
                       data-failure-message="<?php echo t('unable to fetch content') ?>"
                       data-before-message="<?php echo t('in progress...') ?>"
@@ -68,7 +68,7 @@
                 </span>
             </li>
             <?php if ($group_id): ?>
-            <li>
+            <li class="group-action">
                 <a href="?action=unread&amp;group_id=<?php echo $group_id ?>"><?php echo t('Back to the group') ?></a>
             </li>
             <?php endif; ?>
