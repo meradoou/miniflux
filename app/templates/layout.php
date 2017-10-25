@@ -9,7 +9,6 @@
         <script type="text/javascript" src="assets/js/app.min.js?<?php echo filemtime('assets/js/app.min.js') ?>" defer></script>
     </head>
     <body>
-        <div id="miniflux">
             <?php echo Miniflux\Template\load('common/menu', array('menu' => isset($menu) ? $menu : '')) ?>
 
             <section class="page" data-item-page="<?= $menu ?>">
@@ -19,6 +18,5 @@
             </section>
 
             <?php echo Miniflux\Template\load('common/help') ?>
-        </div>
     </body>
 </html>
