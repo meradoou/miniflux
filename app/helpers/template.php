@@ -38,7 +38,6 @@ function rtl(array $item)
 function css()
 {
     $theme = config('theme');
-
     if ($theme !== 'original') {
         $css_file = THEME_DIRECTORY.'/'.$theme.'/css/app.css';
         $css_url = THEME_URL_PATH.'/'.$theme.'/css/app.css';

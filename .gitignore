@@ -31,3 +31,4 @@ themes/*
 .viminfo
 .ssh/
 .bash_history
+rules/*
